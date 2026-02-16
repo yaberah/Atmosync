@@ -1,89 +1,100 @@
 # CLAUDE.md — Atmosync
 
-This file provides context for AI assistants working on the Atmosync repository.
+このファイルは、Atmosyncリポジトリで作業するAIアシスタント向けのコンテキストを提供します。
 
-## Project Overview
+## プロジェクト概要
 
-Atmosync is a weather/atmospheric data synchronization application. The repository is currently in its initial setup phase.
+Atmosyncは、オフィスが静かすぎる環境を改善するために、時間帯に応じて自動的に音楽を生成・再生するアプリケーションです。アルゴリズムによる音楽生成（Web Audio API / Tone.js）を採用し、完全無料・オフラインで動作します。
 
-**Repository:** `yaberah/Atmosync`
+**リポジトリ:** `yaberah/Atmosync`
+**要件定義:** `docs/requirements.md`
 
-## Repository Status
+## プロジェクトステータス
 
-This project is in early development. The codebase has not yet been populated with application code. This document should be updated as the project grows to reflect the actual structure, tooling, and conventions in use.
+現在、初期開発段階です。第一段階としてWebアプリのプロトタイプを作成し、最終的にはiOSアプリを目指します。
 
-## Getting Started
+## 技術スタック
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yaberah/Atmosync.git
-   cd Atmosync
-   ```
-2. Check the project's package manager and install dependencies once a `package.json`, `requirements.txt`, or equivalent is added.
-3. Follow any setup instructions added to the project README.
+### Webアプリ版（第一段階）
+- **フロントエンド**: HTML5, CSS3, JavaScript
+- **音楽生成**: Web Audio API
+- **オプション**: Tone.js（より高度な音楽制御）
 
-## Project Structure
+### iOS版（将来）
+- **言語**: Swift
+- **音楽生成**: AVFoundation + AudioKit
 
-> **Note:** Update this section as the project evolves.
+## プロジェクト構成
 
 ```
 Atmosync/
-├── CLAUDE.md          # AI assistant context (this file)
-└── (project files to be added)
+├── CLAUDE.md              # AIアシスタント向けコンテキスト（このファイル）
+└── docs/
+    └── requirements.md    # 要件定義書
 ```
 
-## Development Workflow
+> **注記:** アプリケーションコードが追加され次第、このセクションを更新してください。
 
-### Branching
+## 主要な機能
 
-- The default branch is used for stable, reviewed code.
-- Feature branches should follow the pattern: `feature/<description>` or `<username>/<description>`.
-- Claude-generated branches follow the pattern: `claude/<description>-<id>`.
+1. **再生コントロール** — 再生/停止/曲変更
+2. **スタイル選択** — アンビエント、ローファイ、ジャズの3種類
+3. **時間帯自動検出** — 6つの時間帯に応じて音楽パラメータを自動調整
+4. **情報表示** — 現在時刻、時間帯、再生状態、音楽設定
 
-### Commits
+## デザイン要件
 
-- Write clear, concise commit messages that describe the "why" over the "what."
-- Keep commits focused — one logical change per commit.
+- **カラースキーム**: パープル系グラデーション（#667eea → #764ba2）
+- **レイアウト**: カード型UI、中央配置、最大幅600px
+- **レスポンシブ対応**: モバイルでも使用可能
 
-### Pull Requests
+## 制約事項
 
-- PRs should include a summary of changes and a test plan.
-- Link related issues when applicable.
+- 予算ゼロ — 外部APIやサービスへの依存なし
+- Web Audio APIはブラウザ対応が必須
+- ユーザーの最初のクリックまで音声再生不可（ブラウザのセキュリティ仕様）
+- アルゴリズム生成であり、AI生成音楽ではない
 
-## Code Conventions
+## 開発ワークフロー
 
-> **Note:** Update this section once the tech stack and linting/formatting tools are established.
+### ブランチ運用
+- デフォルトブランチは安定版・レビュー済みコード用
+- 機能ブランチ: `feature/<説明>` または `<ユーザー名>/<説明>`
+- Claude生成ブランチ: `claude/<説明>-<id>`
 
-- Follow the language-specific style guide for whichever stack is adopted.
-- Prefer consistency with existing code over personal preferences.
-- Keep functions small and focused on a single responsibility.
-- Write meaningful variable and function names — avoid abbreviations unless widely understood.
+### コミット
+- 「何を」ではなく「なぜ」を重視した簡潔なコミットメッセージ
+- 1コミット = 1つの論理的な変更
 
-## Testing
+### プルリクエスト
+- 変更内容の要約とテストプランを含めること
+- 関連するissueがあればリンクすること
 
-> **Note:** Update this section once a test framework is chosen.
+## コード規約
 
-- Tests should be added for new features and bug fixes.
-- Run the full test suite before submitting a PR.
+- HTML/CSS/JavaScriptの標準的なスタイルガイドに従う
+- 既存コードとの一貫性を優先
+- 関数は小さく、単一の責任に集中
+- 意味のある変数名・関数名を使用（不必要な略称を避ける）
 
-## Common Tasks
+## 共通タスク
 
-| Task | Command |
-|------|---------|
-| Install dependencies | *(to be defined)* |
-| Run development server | *(to be defined)* |
-| Run tests | *(to be defined)* |
-| Lint / format code | *(to be defined)* |
-| Build for production | *(to be defined)* |
+| タスク | コマンド |
+|--------|---------|
+| 依存関係のインストール | *（未定）* |
+| 開発サーバーの起動 | *（未定）* |
+| テストの実行 | *（未定）* |
+| リント / フォーマット | *（未定）* |
+| 本番ビルド | *（未定）* |
 
-## AI Assistant Guidelines
+## AIアシスタント向けガイドライン
 
-When working in this repository:
+このリポジトリで作業する際の注意事項：
 
-1. **Read before writing.** Always read a file before modifying it. Understand the surrounding context.
-2. **Stay focused.** Only make changes that are directly requested or clearly necessary. Avoid adding features, refactoring, or "improving" code beyond the task at hand.
-3. **Keep it simple.** Prefer the simplest solution that solves the problem. Avoid over-engineering, premature abstractions, and speculative features.
-4. **Match existing style.** Follow the patterns, naming conventions, and formatting already present in the codebase.
-5. **Don't break things.** Run tests and linters after making changes. If a test fails, fix it before moving on.
-6. **Security matters.** Do not introduce vulnerabilities (injection, XSS, hardcoded secrets, etc.). Validate inputs at system boundaries.
-7. **Update this file.** When the project structure, tooling, or conventions change significantly, update CLAUDE.md to keep it accurate.
+1. **読んでから書く。** ファイルを変更する前に必ず読むこと。既存のコンテキストを理解する。
+2. **焦点を絞る。** 直接依頼された変更、または明らかに必要な変更のみ行う。依頼外の機能追加やリファクタリングは避ける。
+3. **シンプルに保つ。** 最もシンプルな解決策を選ぶ。過度な設計、早すぎる抽象化、推測的な機能は避ける。
+4. **既存スタイルに合わせる。** コードベースに既にあるパターン、命名規則、フォーマットに従う。
+5. **壊さない。** 変更後はテストとリンターを実行する。テストが失敗したら、先に修正する。
+6. **セキュリティを重視。** 脆弱性（インジェクション、XSS、ハードコードされた秘密情報等）を導入しない。
+7. **このファイルを更新する。** プロジェクト構成、ツール、規約が大きく変わった際はCLAUDE.mdを更新する。
